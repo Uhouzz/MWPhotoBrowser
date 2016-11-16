@@ -21,10 +21,16 @@
 @property (nonatomic) BOOL emptyImage;
 @property (nonatomic) BOOL isVideo;
 
+
+
 + (MWPhoto *)photoWithImage:(UIImage *)image;
 + (MWPhoto *)photoWithURL:(NSURL *)url;
 + (MWPhoto *)photoWithAsset:(PHAsset *)asset targetSize:(CGSize)targetSize;
 + (MWPhoto *)videoWithURL:(NSURL *)url; // Initialise video with no poster image
+
++ (NSArray *)photosWithImages:(NSArray *)imagesArray;
++ (NSArray *)photosWithFilePaths:(NSArray *)pathsArray;
++ (NSArray *)photosWithURLs:(NSArray *)urlsArray;
 
 - (id)init;
 - (id)initWithImage:(UIImage *)image;

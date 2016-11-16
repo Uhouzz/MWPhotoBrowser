@@ -8,20 +8,27 @@
 
 #import "AppDelegate.h"
 //#import "Menu.h"
+#import "MWDemoViewController.h"
 
 @implementation AppDelegate
 
 @synthesize window = _window;
-//@synthesize viewController = _viewController;
+@synthesize viewController = _viewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 //    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-//    
-//    Menu *menu = [[Menu alloc] initWithStyle:UITableViewStylePlain];
+//
+//    MWDemoViewController *menu = [[MWDemoViewController alloc] init];
 //    self.viewController = (UIViewController *)[[UINavigationController alloc] initWithRootViewController:menu];
 //    self.window.rootViewController = self.viewController;
+//    
+    
+    
+//    MWDemoViewController *menu = [[MWDemoViewController alloc] init];
+//    //    self.viewController = (UIViewController *)[[UINavigationController alloc] initWithRootViewController:menu];
+//    self.window.rootViewController = menu;
 //    [self.window makeKeyAndVisible];
     return YES;
 }

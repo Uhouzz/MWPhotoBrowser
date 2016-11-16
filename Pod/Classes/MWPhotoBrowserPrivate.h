@@ -27,6 +27,7 @@
 	// Paging & layout
 	NSMutableSet *_visiblePages, *_recycledPages;
 	NSUInteger _currentPageIndex;
+    NSUInteger _initalPageIndex;
     NSUInteger _previousPageIndex;
     CGRect _previousLayoutBounds;
 	NSUInteger _pageIndexBeforeRotation;
@@ -36,6 +37,8 @@
 	NSTimer *_controlVisibilityTimer;
 	UIBarButtonItem *_previousButton, *_nextButton, *_actionButton, *_doneButton;
     MBProgressHUD *_progressHUD;
+    UILabel *_counterLabel;
+    UIBarButtonItem *_counterButton;
     
     // Grid
     MWGridViewController *_gridController;
@@ -58,6 +61,12 @@
     NSUInteger _currentVideoIndex;
     UIActivityIndicatorView *_currentVideoLoadingIndicator;
     
+    // Present
+    UIView *_senderViewForAnimation;
+    
+    //CGRect
+    CGRect _senderViewOriginalFrame;
+    
     // Misc
     BOOL _hasBelongedToViewController;
     BOOL _isVCBasedStatusBarAppearance;
@@ -72,6 +81,8 @@
     BOOL _viewHasAppearedInitially;
     CGPoint _currentGridContentOffset;
     
+    
+    UIWindow *_applicationWindow;
 }
 
 // Properties

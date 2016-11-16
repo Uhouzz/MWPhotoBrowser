@@ -24,6 +24,7 @@
 
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) NSURL *photoURL;
+@property (nonatomic, strong) NSURL *placeholderURL;
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic) CGSize assetTargetSize;
 
@@ -34,6 +35,7 @@
 @implementation MWPhoto
 
 @synthesize underlyingImage = _underlyingImage; // synth property from protocol
+@synthesize placeholderImage = _placeholderImage; // synth property from protocol
 
 #pragma mark - Class Methods
 
@@ -41,7 +43,7 @@
 	return [[MWPhoto alloc] initWithImage:image];
 }
 
-+ (MWPhoto *)photoWithURL:(NSURL *)url {
++ (MWPhoto *)photoWithURL:(NSURL *)url{
     return [[MWPhoto alloc] initWithURL:url];
 }
 
@@ -52,6 +54,39 @@
 + (MWPhoto *)videoWithURL:(NSURL *)url {
     return [[MWPhoto alloc] initWithVideoURL:url];
 }
+
+
++ (NSArray *)photosWithImages:(NSArray *)imagesArray{
+    NSMutableArray *photoArray = [NSMutableArray arrayWithCapacity:imagesArray.count];
+    for (UIImage *image in imagesArray) {
+        MWPhoto *photo = [MWPhoto photoWithImage:image];
+        [photoArray addObject:photo];
+    }
+    
+    return [photoArray copy];
+}
++ (NSArray *)photosWithFilePaths:(NSArray *)pathsArray{
+
+}
++ (NSArray *)photosWithURLs:(NSArray *)urlsArray{
+    NSMutableArray *photoArray = [NSMutableArray arrayWithCapacity:urlsArray.count];
+    for (NSUInteger i = 0 ;i<urlsArray.count;i++) {
+        id urlObj = [urlsArray objectAtIndex:i];
+        if ([urlObj isKindOfClass:[NSURL class]]) {
+            MWPhoto *photo = [MWPhoto photoWithURL:urlObj];
+            [photoArray addObject:photo];
+        }
+        
+        if ([urlObj isKindOfClass:[NSString class]]) {
+            MWPhoto *photo = [MWPhoto photoWithURL:[NSURL URLWithString:urlObj]];
+            [photoArray addObject:photo];
+
+        }
+    }
+    
+    return [photoArray copy];
+}
+
 
 #pragma mark - Init
 

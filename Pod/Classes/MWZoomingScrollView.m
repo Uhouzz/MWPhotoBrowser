@@ -124,7 +124,7 @@
 
 // Get and display image
 - (void)displayImage {
-	if (_photo && _photoImageView.image == nil) {
+	if (_photo) {
 		
 		// Reset
 		self.maximumZoomScale = 1;
@@ -137,7 +137,9 @@
 		if (img) {
 			
 			// Hide indicator
-			[self hideLoadingIndicator];
+            if ([_photo underlyingImage]) {
+                [self hideLoadingIndicator];
+            }
 			
 			// Set image
 			_photoImageView.image = img;
@@ -378,7 +380,11 @@
 #pragma mark - Tap Detection
 
 - (void)handleSingleTap:(CGPoint)touchPoint {
-	[_photoBrowser performSelector:@selector(toggleControls) withObject:nil afterDelay:0.2];
+    if (_photoBrowser.shouldTapDismiss) {
+        [_photoBrowser performSelector:@selector(doneButtonPressed:) withObject:nil afterDelay:0.2];
+    } else {
+        [_photoBrowser performSelector:@selector(toggleControls) withObject:nil afterDelay:0.2];
+    }
 }
 
 - (void)handleDoubleTap:(CGPoint)touchPoint {

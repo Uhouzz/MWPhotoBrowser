@@ -171,7 +171,7 @@
     MWPhoto *photo, *thumb;
     BOOL displayActionButton = YES;
     BOOL displaySelectionButtons = NO;
-    BOOL displayNavArrows = NO;
+    BOOL displayNavArrows = YES;
     BOOL enableGrid = YES;
     BOOL startOnGrid = NO;
     BOOL autoPlayOnAppear = NO;
@@ -179,7 +179,7 @@
 		case 0:
             // Photos
             photo = [MWPhoto photoWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"photo2" ofType:@"jpg"]]];
-            photo.caption = @"The London Eye is a giant Ferris wheel situated on the banks of the River Thames, in London, England.";
+//            photo.caption = @"The London Eye is a giant Ferris wheel situated on the banks of the River Thames, in London, England.";
 			[photos addObject:photo];
             // Options
             enableGrid = NO;
@@ -1117,12 +1117,13 @@
     browser.displayActionButton = displayActionButton;
     browser.displayNavArrows = displayNavArrows;
     browser.displaySelectionButtons = displaySelectionButtons;
-    browser.alwaysShowControls = displaySelectionButtons;
+    browser.alwaysShowControls = YES;
     browser.zoomPhotosToFill = YES;
     browser.enableGrid = enableGrid;
     browser.startOnGrid = startOnGrid;
     browser.enableSwipeToDismiss = NO;
     browser.autoPlayOnAppear = autoPlayOnAppear;
+    browser.displayCounterLabel = YES;
     [browser setCurrentPhotoIndex:0];
     
     // Test custom selection images

@@ -44,6 +44,7 @@
 @property (nonatomic) BOOL zoomPhotosToFill;
 @property (nonatomic) BOOL displayNavArrows;
 @property (nonatomic) BOOL displayActionButton;
+@property (nonatomic) BOOL displayCounterLabel;
 @property (nonatomic) BOOL displaySelectionButtons;
 @property (nonatomic) BOOL alwaysShowControls;
 @property (nonatomic) BOOL enableGrid;
@@ -53,13 +54,25 @@
 @property (nonatomic) NSUInteger delayToHideElements;
 @property (nonatomic, readonly) NSUInteger currentIndex;
 
+@property (nonatomic) BOOL shouldTapDismiss;
+
 // Customise image selection icons as they are the only icons with a colour tint
 // Icon should be located in the app's main bundle
 @property (nonatomic, strong) NSString *customImageSelectedIconName;
 @property (nonatomic, strong) NSString *customImageSelectedSmallIconName;
 
+// Animation time (default .28)
+@property (nonatomic) float animationDuration;
+
 // Init
 - (id)initWithPhotos:(NSArray *)photosArray;
+// Init (animated)
+- (id) initWithPhotos:(NSArray *)photosArray animatedFromView:(UIView *)view;
+// Init with NSURL objects
+- (id) initWithPhotoURLs:(NSArray *)photoURLsArray;
+// Init with NSURL objects (animated)
+- (id) initWithPhotoURLs:(NSArray *)photoURLsArray animatedFromView:(UIView *)view;
+
 - (id)initWithDelegate:(id <MWPhotoBrowserDelegate>)delegate;
 
 // Reloads the photo browser and refetches data
